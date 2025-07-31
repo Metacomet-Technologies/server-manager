@@ -1,10 +1,16 @@
 import React from 'react';
 import { Link } from '@inertiajs/react';
+import { cn } from '@/lib/utils';
+import { Session } from '@/types';
 
-export default function SessionList({ sessions }) {
+interface SessionListProps {
+    sessions: Session[];
+}
+
+export default function SessionList({ sessions }: SessionListProps) {
     if (!sessions || sessions.length === 0) {
         return (
-            <div className="text-center py-12">
+            <div className="py-12 text-center">
                 <p className="text-gray-500">No active sessions</p>
             </div>
         );
@@ -16,14 +22,15 @@ export default function SessionList({ sessions }) {
                 <li key={session.id}>
                     <Link
                         href={route('server-manager.terminal', session.id)}
-                        className="block hover:bg-gray-50 px-4 py-4 sm:px-6"
+                        className="block px-4 py-4 hover:bg-gray-50 sm:px-6"
                     >
                         <div className="flex items-center justify-between">
                             <div className="flex items-center">
                                 <div className="flex-shrink-0">
-                                    <span className={`inline-block h-2 w-2 rounded-full ${
-                                        session.is_active ? 'bg-green-400' : 'bg-gray-400'
-                                    }`} />
+                                    <span className={cn(
+                                        'inline-block h-2 w-2 rounded-full',
+                                        session.status === 'active' ? 'bg-green-400' : 'bg-gray-400'
+                                    )} />
                                 </div>
                                 <div className="ml-4">
                                     <div className="text-sm font-medium text-gray-900">
@@ -37,8 +44,8 @@ export default function SessionList({ sessions }) {
                             </div>
                             <div className="flex items-center">
                                 <div className="text-sm text-gray-500">
-                                    {session.last_activity_at ? (
-                                        <span>Active {formatRelativeTime(session.last_activity_at)}</span>
+                                    {session.updated_at ? (
+                                        <span>Active {formatRelativeTime(session.updated_at)}</span>
                                     ) : (
                                         <span>Never used</span>
                                     )}
@@ -55,10 +62,10 @@ export default function SessionList({ sessions }) {
     );
 }
 
-function formatRelativeTime(dateString) {
+function formatRelativeTime(dateString: string) {
     const date = new Date(dateString);
     const now = new Date();
-    const diffInSeconds = Math.floor((now - date) / 1000);
+    const diffInSeconds = Math.floor((now.getTime() - date.getTime()) / 1000);
 
     if (diffInSeconds < 60) return 'just now';
     if (diffInSeconds < 3600) return `${Math.floor(diffInSeconds / 60)}m ago`;

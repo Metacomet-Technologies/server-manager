@@ -1,14 +1,26 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, forwardRef, useImperativeHandle } from 'react';
 import { Terminal as XTerm } from 'xterm';
 import { FitAddon } from 'xterm-addon-fit';
 import { WebLinksAddon } from 'xterm-addon-web-links';
 import 'xterm/css/xterm.css';
 
-export default function Terminal({ sessionId, channel, canExecute, onCommand, onResize, onClose }) {
-    const terminalRef = useRef(null);
-    const xtermRef = useRef(null);
-    const fitAddonRef = useRef(null);
-    const [currentLine, setCurrentLine] = useState('');
+interface TerminalProps {
+    sessionId: number;
+    canExecute: boolean;
+    onCommand: (command: string) => void;
+    onResize: (cols: number, rows: number) => void;
+    onClose: () => void;
+}
+
+export interface TerminalHandle {
+    writeOutput: (output: string, type?: 'output' | 'input') => void;
+}
+
+const Terminal = forwardRef<TerminalHandle, TerminalProps>(
+    ({ sessionId, canExecute, onCommand, onResize, onClose }, ref) => {
+    const terminalRef = useRef<HTMLDivElement>(null);
+    const xtermRef = useRef<XTerm | null>(null);
+    const fitAddonRef = useRef<FitAddon | null>(null);
 
     useEffect(() => {
         // Initialize xterm.js
@@ -94,29 +106,21 @@ export default function Terminal({ sessionId, channel, canExecute, onCommand, on
         };
     }, [sessionId, canExecute, onCommand, onResize]);
 
-    useEffect(() => {
-        if (!channel || !xtermRef.current) return;
-
-        // Listen for terminal output
-        const handleOutput = (event) => {
+    // Expose methods to parent component
+    useImperativeHandle(ref, () => ({
+        writeOutput: (output: string, type?: 'output' | 'input') => {
             if (xtermRef.current) {
-                xtermRef.current.write(event.output);
+                xtermRef.current.write(output);
                 
                 // If it's input echo, add prompt after
-                if (event.type === 'input' && canExecute) {
+                if (type === 'input' && canExecute) {
                     setTimeout(() => {
-                        xtermRef.current.write('$ ');
+                        xtermRef.current?.write('$ ');
                     }, 50);
                 }
             }
-        };
-
-        channel.listen('.terminal.output', handleOutput);
-
-        return () => {
-            channel.stopListening('.terminal.output', handleOutput);
-        };
-    }, [channel, canExecute]);
+        }
+    }), [canExecute]);
 
     return (
         <div className="relative">
@@ -139,4 +143,8 @@ export default function Terminal({ sessionId, channel, canExecute, onCommand, on
             />
         </div>
     );
-}
+});
+
+Terminal.displayName = 'Terminal';
+
+export default Terminal;

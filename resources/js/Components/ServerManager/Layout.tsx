@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { ReactNode } from 'react';
 import { Link, usePage } from '@inertiajs/react';
+import { cn } from '@/lib/utils';
 
-export default function Layout({ children }) {
+interface LayoutProps {
+    children: ReactNode;
+}
+
+export default function Layout({ children }: LayoutProps) {
     const { url } = usePage();
 
     const navigation = [
@@ -24,11 +29,12 @@ export default function Layout({ children }) {
                                     <Link
                                         key={item.name}
                                         href={item.href}
-                                        className={`${
+                                        className={cn(
+                                            'inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium',
                                             item.current
                                                 ? 'border-indigo-500 text-gray-900'
                                                 : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-                                        } inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium`}
+                                        )}
                                     >
                                         {item.name}
                                     </Link>

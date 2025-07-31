@@ -1,6 +1,21 @@
 import React from 'react';
+import { cn } from '@/lib/utils';
 
-export default function StatsCard({ title, value, icon, color = 'blue', clickable = false }) {
+interface StatsCardProps {
+    title: string;
+    value: string | number;
+    icon: 'server' | 'terminal' | 'plus' | 'arrow-right';
+    color?: 'blue' | 'green' | 'indigo' | 'purple' | 'red' | 'yellow';
+    clickable?: boolean;
+}
+
+export default function StatsCard({ 
+    title, 
+    value, 
+    icon, 
+    color = 'blue', 
+    clickable = false 
+}: StatsCardProps) {
     const colors = {
         blue: 'bg-blue-500',
         green: 'bg-green-500',
@@ -13,14 +28,17 @@ export default function StatsCard({ title, value, icon, color = 'blue', clickabl
     const bgColor = colors[color] || colors.blue;
 
     return (
-        <div className={`bg-white overflow-hidden shadow rounded-lg ${clickable ? 'cursor-pointer hover:shadow-lg transition-shadow' : ''}`}>
+        <div className={cn(
+            'overflow-hidden rounded-lg bg-white shadow',
+            clickable && 'cursor-pointer transition-shadow hover:shadow-lg'
+        )}>
             <div className="p-5">
                 <div className="flex items-center">
-                    <div className={`flex-shrink-0 ${bgColor} rounded-md p-3`}>
+                    <div className={cn('flex-shrink-0 rounded-md p-3', bgColor)}>
                         {renderIcon(icon)}
                     </div>
                     <div className="ml-5 w-0 flex-1">
-                        <dt className="text-sm font-medium text-gray-500 truncate">
+                        <dt className="truncate text-sm font-medium text-gray-500">
                             {title}
                         </dt>
                         <dd className="text-2xl font-semibold text-gray-900">
@@ -33,7 +51,7 @@ export default function StatsCard({ title, value, icon, color = 'blue', clickabl
     );
 }
 
-function renderIcon(icon) {
+function renderIcon(icon: StatsCardProps['icon']) {
     const iconClass = "h-6 w-6 text-white";
     
     switch (icon) {
