@@ -1,12 +1,12 @@
 <?php
 
-namespace VendorName\Skeleton\Commands;
+namespace Metacomet\TmuxManager\Commands;
 
 use Illuminate\Console\Command;
 
-class SkeletonCommand extends Command
+class TmuxManagerCommand extends Command
 {
-    public $signature = 'skeleton';
+    public $signature = 'tmux-manager';
 
     public $description = 'My command';
 
