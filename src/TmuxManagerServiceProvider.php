@@ -2,9 +2,9 @@
 
 namespace Metacomet\TmuxManager;
 
+use Metacomet\TmuxManager\Commands\TmuxManagerCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Metacomet\TmuxManager\Commands\TmuxManagerCommand;
 
 class TmuxManagerServiceProvider extends PackageServiceProvider
 {
