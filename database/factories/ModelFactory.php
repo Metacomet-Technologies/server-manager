@@ -1,6 +1,6 @@
 <?php
 
-namespace Metacomet\TmuxManager\Database\Factories;
+namespace Metacomet\ServerManager\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
