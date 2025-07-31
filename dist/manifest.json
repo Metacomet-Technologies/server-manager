@@ -1,107 +1,116 @@
 {
   "_Layout.js": {
     "file": "js/Layout.js",
+    "name": "Layout",
     "imports": [
-      "resources/js/app.jsx"
+      "resources/js/app.tsx"
     ]
   },
   "resources/css/app.css": {
     "file": "css/app.css",
+    "src": "resources/css/app.css",
     "isEntry": true,
-    "src": "resources/css/app.css"
+    "names": [
+      "app.css"
+    ]
   },
-  "resources/js/Pages/ServerManager/Dashboard.jsx": {
+  "resources/js/Pages/ServerManager/Dashboard.tsx": {
     "file": "js/Dashboard.js",
-    "imports": [
-      "resources/js/app.jsx",
-      "_Layout.js"
-    ],
+    "name": "Dashboard",
+    "src": "resources/js/Pages/ServerManager/Dashboard.tsx",
     "isDynamicEntry": true,
-    "src": "resources/js/Pages/ServerManager/Dashboard.jsx"
+    "imports": [
+      "resources/js/app.tsx",
+      "_Layout.js"
+    ]
   },
-  "resources/js/Pages/ServerManager/Servers/Create.jsx": {
+  "resources/js/Pages/ServerManager/Servers/Create.tsx": {
     "file": "js/Create.js",
-    "imports": [
-      "resources/js/app.jsx",
-      "_Layout.js"
-    ],
+    "name": "Create",
+    "src": "resources/js/Pages/ServerManager/Servers/Create.tsx",
     "isDynamicEntry": true,
-    "src": "resources/js/Pages/ServerManager/Servers/Create.jsx"
+    "imports": [
+      "resources/js/app.tsx",
+      "_Layout.js"
+    ]
   },
-  "resources/js/Pages/ServerManager/Servers/Edit.jsx": {
+  "resources/js/Pages/ServerManager/Servers/Edit.tsx": {
     "file": "js/Edit.js",
-    "imports": [
-      "resources/js/app.jsx",
-      "_Layout.js"
-    ],
+    "name": "Edit",
+    "src": "resources/js/Pages/ServerManager/Servers/Edit.tsx",
     "isDynamicEntry": true,
-    "src": "resources/js/Pages/ServerManager/Servers/Edit.jsx"
+    "imports": [
+      "resources/js/app.tsx",
+      "_Layout.js"
+    ]
   },
-  "resources/js/Pages/ServerManager/Servers/Index.jsx": {
+  "resources/js/Pages/ServerManager/Servers/Index.tsx": {
     "file": "js/Index.js",
-    "imports": [
-      "resources/js/app.jsx",
-      "_Layout.js"
-    ],
+    "name": "Index",
+    "src": "resources/js/Pages/ServerManager/Servers/Index.tsx",
     "isDynamicEntry": true,
-    "src": "resources/js/Pages/ServerManager/Servers/Index.jsx"
+    "imports": [
+      "resources/js/app.tsx",
+      "_Layout.js"
+    ]
   },
-  "resources/js/Pages/ServerManager/Sessions/Create.jsx": {
+  "resources/js/Pages/ServerManager/Sessions/Create.tsx": {
     "file": "js/Create2.js",
-    "imports": [
-      "resources/js/app.jsx",
-      "_Layout.js"
-    ],
+    "name": "Create",
+    "src": "resources/js/Pages/ServerManager/Sessions/Create.tsx",
     "isDynamicEntry": true,
-    "src": "resources/js/Pages/ServerManager/Sessions/Create.jsx"
+    "imports": [
+      "resources/js/app.tsx",
+      "_Layout.js"
+    ]
   },
-  "resources/js/Pages/ServerManager/Sessions/Index.jsx": {
+  "resources/js/Pages/ServerManager/Sessions/Index.tsx": {
     "file": "js/Index2.js",
-    "imports": [
-      "resources/js/app.jsx",
-      "_Layout.js"
-    ],
+    "name": "Index",
+    "src": "resources/js/Pages/ServerManager/Sessions/Index.tsx",
     "isDynamicEntry": true,
-    "src": "resources/js/Pages/ServerManager/Sessions/Index.jsx"
+    "imports": [
+      "resources/js/app.tsx",
+      "_Layout.js"
+    ]
   },
-  "resources/js/Pages/ServerManager/Sessions/Share.jsx": {
+  "resources/js/Pages/ServerManager/Sessions/Share.tsx": {
     "file": "js/Share.js",
+    "name": "Share",
+    "src": "resources/js/Pages/ServerManager/Sessions/Share.tsx",
+    "isDynamicEntry": true,
     "imports": [
-      "resources/js/app.jsx",
+      "resources/js/app.tsx",
+      "_Layout.js"
+    ]
+  },
+  "resources/js/Pages/ServerManager/Terminal.tsx": {
+    "file": "js/Terminal.js",
+    "name": "Terminal",
+    "src": "resources/js/Pages/ServerManager/Terminal.tsx",
+    "isDynamicEntry": true,
+    "imports": [
+      "resources/js/app.tsx",
       "_Layout.js"
     ],
-    "isDynamicEntry": true,
-    "src": "resources/js/Pages/ServerManager/Sessions/Share.jsx"
-  },
-  "resources/js/Pages/ServerManager/Terminal.css": {
-    "file": "css/Terminal.css",
-    "src": "resources/js/Pages/ServerManager/Terminal.css"
-  },
-  "resources/js/Pages/ServerManager/Terminal.jsx": {
     "css": [
       "css/Terminal.css"
-    ],
-    "file": "js/Terminal.js",
-    "imports": [
-      "resources/js/app.jsx",
-      "_Layout.js"
-    ],
-    "isDynamicEntry": true,
-    "src": "resources/js/Pages/ServerManager/Terminal.jsx"
+    ]
   },
-  "resources/js/app.jsx": {
-    "dynamicImports": [
-      "resources/js/Pages/ServerManager/Dashboard.jsx",
-      "resources/js/Pages/ServerManager/Servers/Create.jsx",
-      "resources/js/Pages/ServerManager/Servers/Edit.jsx",
-      "resources/js/Pages/ServerManager/Servers/Index.jsx",
-      "resources/js/Pages/ServerManager/Sessions/Create.jsx",
-      "resources/js/Pages/ServerManager/Sessions/Index.jsx",
-      "resources/js/Pages/ServerManager/Sessions/Share.jsx",
-      "resources/js/Pages/ServerManager/Terminal.jsx"
-    ],
+  "resources/js/app.tsx": {
     "file": "js/app2.js",
+    "name": "app",
+    "src": "resources/js/app.tsx",
     "isEntry": true,
-    "src": "resources/js/app.jsx"
+    "dynamicImports": [
+      "resources/js/Pages/ServerManager/Dashboard.tsx",
+      "resources/js/Pages/ServerManager/Servers/Create.tsx",
+      "resources/js/Pages/ServerManager/Servers/Edit.tsx",
+      "resources/js/Pages/ServerManager/Servers/Index.tsx",
+      "resources/js/Pages/ServerManager/Sessions/Create.tsx",
+      "resources/js/Pages/ServerManager/Sessions/Index.tsx",
+      "resources/js/Pages/ServerManager/Sessions/Share.tsx",
+      "resources/js/Pages/ServerManager/Terminal.tsx"
+    ]
   }
 }

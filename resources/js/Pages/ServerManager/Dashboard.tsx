@@ -57,7 +57,7 @@ export default function Dashboard({ stats, recentSessions }: DashboardProps) {
                         </Link>
                     </div>
                     
-                    <div className="rounded-lg bg-white shadow">
+                    <div className="rounded-lg bg-white shadow-sm">
                         <div className="border-b border-gray-200 px-4 py-5 sm:px-6">
                             <h2 className="text-lg font-medium text-gray-900">
                                 Recent Sessions

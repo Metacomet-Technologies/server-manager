@@ -29,12 +29,12 @@ export default function StatsCard({
 
     return (
         <div className={cn(
-            'overflow-hidden rounded-lg bg-white shadow',
+            'overflow-hidden rounded-lg bg-white shadow-sm',
             clickable && 'cursor-pointer transition-shadow hover:shadow-lg'
         )}>
             <div className="p-5">
                 <div className="flex items-center">
-                    <div className={cn('flex-shrink-0 rounded-md p-3', bgColor)}>
+                    <div className={cn('shrink-0 rounded-md p-3', bgColor)}>
                         {renderIcon(icon)}
                     </div>
                     <div className="ml-5 w-0 flex-1">

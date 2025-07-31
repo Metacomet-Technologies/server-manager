@@ -127,7 +127,7 @@ const Terminal = forwardRef<TerminalHandle, TerminalProps>(
             <div className="absolute top-2 right-2 z-10">
                 <button
                     onClick={onClose}
-                    className="text-gray-400 hover:text-gray-600 focus:outline-none"
+                    className="text-gray-400 hover:text-gray-600 focus:outline-hidden"
                     title="Close terminal"
                 >
                     <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

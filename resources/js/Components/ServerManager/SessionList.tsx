@@ -26,7 +26,7 @@ export default function SessionList({ sessions }: SessionListProps) {
                     >
                         <div className="flex items-center justify-between">
                             <div className="flex items-center">
-                                <div className="flex-shrink-0">
+                                <div className="shrink-0">
                                     <span className={cn(
                                         'inline-block h-2 w-2 rounded-full',
                                         session.status === 'active' ? 'bg-green-400' : 'bg-gray-400'
