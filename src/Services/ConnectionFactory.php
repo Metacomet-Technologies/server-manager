@@ -27,7 +27,7 @@ class ConnectionFactory
         return match ($driver) {
             'ssh2' => new Ssh2Connection($serverConfig),
             'phpseclib' => new PhpSeclibConnection($serverConfig),
-            default => throw new \InvalidArgumentException('Unknown SSH driver: ' . (is_string($driver) ? $driver : 'unknown')),
+            default => throw new \InvalidArgumentException('Unknown SSH driver: '.(is_string($driver) ? $driver : 'unknown')),
         };
     }
 }

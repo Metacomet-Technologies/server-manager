@@ -7,7 +7,7 @@ return [
     |--------------------------------------------------------------------------
     |
     | This option controls the SSH connection driver used by the package.
-    | 
+    |
     | Supported drivers:
     | - "phpseclib": Pure PHP implementation, works everywhere but slower
     | - "ssh2": PHP extension, faster but requires ext-ssh2 to be installed
@@ -45,24 +45,24 @@ return [
         | Use '0.0.0.0' to listen on all interfaces
         */
         'host' => env('SERVER_MANAGER_WEBSOCKET_HOST', '127.0.0.1'),
-        
+
         /*
         | The port number for the WebSocket server.
         | Default: 6001
         */
         'port' => env('SERVER_MANAGER_WEBSOCKET_PORT', 6001),
-        
+
         'ssl' => [
             /*
             | Enable SSL/TLS for WebSocket connections.
             */
             'enabled' => env('SERVER_MANAGER_WEBSOCKET_SSL_ENABLED', false),
-            
+
             /*
             | Path to SSL certificate file.
             */
             'cert' => env('SERVER_MANAGER_WEBSOCKET_SSL_CERT'),
-            
+
             /*
             | Path to SSL private key file.
             */
@@ -97,7 +97,7 @@ return [
         | When true, sessions must be explicitly shared.
         */
         'default_private' => env('SERVER_MANAGER_DEFAULT_PRIVATE_SESSIONS', true),
-        
+
         /*
         | Whether to allow session sharing at all.
         | When false, all sessions are forced to be private.
@@ -120,7 +120,7 @@ return [
         | Default: 300 (5 minutes)
         */
         'timeout' => env('SERVER_MANAGER_COMMAND_TIMEOUT', 300),
-        
+
         /*
         | Maximum output size in bytes.
         | Commands producing more output will be truncated.
@@ -144,14 +144,14 @@ return [
         | Default: 3600 (1 hour)
         */
         'ttl' => env('SERVER_MANAGER_SESSION_TTL', 3600),
-        
+
         /*
         | Maximum concurrent sessions per user.
         | Prevents resource exhaustion from too many open sessions.
         | Default: 10
         */
         'max_per_user' => env('SERVER_MANAGER_MAX_SESSIONS_PER_USER', 10),
-        
+
         /*
         | Cleanup interval in seconds.
         | How often to check for and remove expired sessions.
@@ -191,7 +191,7 @@ return [
         | Default: 'api/server-manager'
         */
         'prefix' => env('SERVER_MANAGER_API_PREFIX', 'api/server-manager'),
-        
+
         /*
         | Middleware stack for API routes.
         | Add your own middleware as needed for authentication, rate limiting, etc.
@@ -213,14 +213,14 @@ return [
         | Set to false if you only want to use the API.
         */
         'enabled' => env('SERVER_MANAGER_WEB_ENABLED', true),
-        
+
         /*
         | Web route prefix.
         | All web routes will be prefixed with this value.
         | Default: 'server-manager'
         */
         'prefix' => env('SERVER_MANAGER_WEB_PREFIX', 'server-manager'),
-        
+
         /*
         | Middleware stack for web routes.
         | Typically includes 'web' and authentication middleware.
@@ -239,7 +239,7 @@ return [
     'broadcasting' => [
         /*
         | Broadcasting driver to use.
-        | 
+        |
         | Supported drivers:
         | - "reverb": Laravel Reverb (recommended)
         | - "pusher": Pusher service
@@ -249,7 +249,7 @@ return [
         | - "null": Disable broadcasting
         */
         'driver' => env('SERVER_MANAGER_BROADCAST_DRIVER', 'reverb'),
-        
+
         /*
         | Channel name prefix for all broadcast channels.
         | Helps avoid conflicts with other packages.
