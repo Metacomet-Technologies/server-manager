@@ -4,6 +4,8 @@ composer.lock
 
 # Frontend Assets
 /node_modules
+# Keep dist directory for package distribution
+!/dist
 
 # Logs
 npm-debug.log

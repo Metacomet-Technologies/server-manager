@@ -12,9 +12,10 @@ export default defineConfig({
         laravel({
             input: [
                 'resources/css/app.css',
-                'resources/js/app.tsx',
+                'resources/js/server-manager.tsx',
             ],
             refresh: true,
+            buildDirectory: 'vendor/server-manager/build',
         }),
         react(),
         tailwindcss(),

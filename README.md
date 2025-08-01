@@ -39,8 +39,19 @@ We highly appreciate you sending us a postcard from your hometown, mentioning wh
 
 ```bash
 composer require metacomet-technologies/server-manager
-php artisan server-manager:install --with-frontend
+php artisan server-manager:install
 ```
+
+That's it! 🎉 The package comes with pre-built assets and requires no npm installation or build steps.
+
+### What Makes This Different?
+
+Server Manager is **completely self-contained**:
+
+- ✅ **No npm install required** - All assets are pre-built and served from the package
+- ✅ **No build step needed** - Works immediately after installation
+- ✅ **No conflicts** - Runs as a separate Inertia app alongside your existing pages
+- ✅ **Zero frontend configuration** - Everything works out of the box
 
 ### Manual Installation
 
@@ -49,22 +60,15 @@ php artisan server-manager:install --with-frontend
 composer require metacomet-technologies/server-manager
 ```
 
-2. Publish the configuration:
-```bash
-php artisan vendor:publish --tag="server-manager-config"
-```
-
-3. Run the migrations:
+2. Publish and run migrations:
 ```bash
 php artisan vendor:publish --tag="server-manager-migrations"
 php artisan migrate
 ```
 
-4. (Optional) Install the web interface:
+3. (Optional) Publish the configuration:
 ```bash
-php artisan vendor:publish --tag="server-manager-frontend"
-npm install
-npm run build
+php artisan vendor:publish --tag="server-manager-config"
 ```
 
 5. (Optional) Configure Laravel Reverb for WebSockets:
@@ -182,6 +186,42 @@ composer test
 ## Changelog
 
 Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed recently.
+
+## Development
+
+### Building Assets
+
+```bash
+npm install
+npm run build
+```
+
+### Running Tests
+
+```bash
+composer test
+```
+
+### Releasing a New Version
+
+We provide a release script that handles the entire release process:
+
+```bash
+# Bump patch version (1.0.0 -> 1.0.1)
+./release.sh
+
+# Bump minor version (1.0.0 -> 1.1.0)
+./release.sh minor
+
+# Bump major version (1.0.0 -> 2.0.0)
+./release.sh major
+```
+
+The release script will:
+- Run tests and static analysis
+- Build frontend assets
+- Create and push a git tag
+- Trigger GitHub Actions for release
 
 ## Contributing
 

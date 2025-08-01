@@ -5,8 +5,9 @@ use Metacomet\ServerManager\Http\Controllers\Web\DashboardController;
 use Metacomet\ServerManager\Http\Controllers\Web\ServerWebController;
 use Metacomet\ServerManager\Http\Controllers\Web\SessionWebController;
 use Metacomet\ServerManager\Http\Controllers\Web\TerminalController;
+use Metacomet\ServerManager\Http\Middleware\SetInertiaRootView;
 
-Route::middleware(config('server-manager.web.middleware', ['web', 'auth']))
+Route::middleware(array_merge(config('server-manager.web.middleware', ['web', 'auth']), [SetInertiaRootView::class]))
     ->prefix(config('server-manager.web.prefix', 'server-manager'))
     ->group(function () {
         // Dashboard

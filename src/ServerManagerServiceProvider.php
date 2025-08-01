@@ -73,22 +73,67 @@ class ServerManagerServiceProvider extends PackageServiceProvider
     {
         parent::boot();
 
-        // Publish frontend assets
-        if ($this->app->runningInConsole()) {
-            $this->publishes([
-                __DIR__.'/../dist' => public_path('vendor/server-manager'),
-            ], 'server-manager-assets');
-
-            $this->publishes([
-                __DIR__.'/../resources/js' => resource_path('js/vendor/server-manager'),
-                __DIR__.'/../resources/css' => resource_path('css/vendor/server-manager'),
-            ], 'server-manager-frontend');
-
-            $this->publishes([
-                __DIR__.'/../package.json' => base_path('package-server-manager.json'),
-                __DIR__.'/../vite.config.mts' => base_path('vite.config.server-manager.mts'),
-                __DIR__.'/../tailwind.config.js' => base_path('tailwind.config.server-manager.js'),
-            ], 'server-manager-build');
+        // Set custom Inertia root view for server-manager routes
+        if (config('server-manager.web.enabled', true)) {
+            $this->loadViewsFrom(__DIR__.'/../resources/views', 'server-manager');
+            
+            // Configure Inertia to use our custom layout for server-manager routes
+            if ($this->app->has('inertia')) {
+                $this->app->afterResolving('inertia', function ($inertia) {
+                    if (request()->is(config('server-manager.web.prefix', 'server-manager').'*')) {
+                        $inertia->setRootView('server-manager::app');
+                    }
+                });
+            }
+            
+            // Register asset routes
+            $this->registerAssetRoutes();
         }
+
+        // Only publish config and migrations - everything else is self-contained
+        if ($this->app->runningInConsole()) {
+            // For users who want to customize the views
+            $this->publishes([
+                __DIR__.'/../resources/views' => resource_path('views/vendor/server-manager'),
+            ], 'server-manager-views');
+        }
+    }
+    
+    protected function registerAssetRoutes(): void
+    {
+        $prefix = config('server-manager.web.prefix', 'server-manager');
+        
+        // Serve assets directly from the package
+        \Route::get($prefix.'/assets/{path}', function ($path) {
+            $assetPath = __DIR__.'/../dist/'.$path;
+            
+            if (!file_exists($assetPath)) {
+                abort(404);
+            }
+            
+            $mimeTypes = [
+                'css' => 'text/css',
+                'js' => 'application/javascript',
+                'json' => 'application/json',
+                'woff' => 'font/woff',
+                'woff2' => 'font/woff2',
+                'ttf' => 'font/ttf',
+                'eot' => 'application/vnd.ms-fontobject',
+                'svg' => 'image/svg+xml',
+                'jpg' => 'image/jpeg',
+                'jpeg' => 'image/jpeg',
+                'gif' => 'image/gif',
+                'png' => 'image/png',
+                'ico' => 'image/x-icon',
+            ];
+            
+            $extension = pathinfo($path, PATHINFO_EXTENSION);
+            $mimeType = $mimeTypes[$extension] ?? 'application/octet-stream';
+            
+            return response()->file($assetPath, [
+                'Content-Type' => $mimeType,
+                'Cache-Control' => 'public, max-age=31536000',
+            ]);
+        })->where('path', '.*')->name('server-manager.assets');
     }
 }
