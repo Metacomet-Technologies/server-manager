@@ -80,7 +80,8 @@ class ServerManagerServiceProvider extends PackageServiceProvider
             // Configure Inertia to use our custom layout for server-manager routes
             if ($this->app->has('inertia')) {
                 $this->app->afterResolving('inertia', function ($inertia) {
-                    if (request()->is(config('server-manager.web.prefix', 'server-manager').'*')) {
+                    $prefix = config('server-manager.web.prefix', 'server-manager');
+                    if (is_string($prefix) && request()->is($prefix.'*')) {
                         $inertia->setRootView('server-manager::app');
                     }
                 });
@@ -104,7 +105,7 @@ class ServerManagerServiceProvider extends PackageServiceProvider
         $prefix = config('server-manager.web.prefix', 'server-manager');
 
         // Serve assets directly from the package
-        \Route::get($prefix.'/assets/{path}', function ($path) {
+        \Route::get((string) $prefix.'/assets/{path}', function ($path) {
             $assetPath = __DIR__.'/../dist/'.$path;
 
             if (! file_exists($assetPath)) {

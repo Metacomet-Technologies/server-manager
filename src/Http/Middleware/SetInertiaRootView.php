@@ -4,13 +4,14 @@ namespace Metacomet\ServerManager\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
-use Inertia\Inertia;
 
 class SetInertiaRootView
 {
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next): mixed
     {
-        Inertia::setRootView('server-manager::app');
+        if (class_exists('\Inertia\Inertia')) {
+            \Inertia\Inertia::setRootView('server-manager::app');
+        }
 
         return $next($request);
     }

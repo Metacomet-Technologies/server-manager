@@ -13,30 +13,6 @@ parameters:
 			path: src/Commands/InstallCommand.php
 
 		-
-			message: '#^Cannot access offset ''dependencies''\|''devDependencies'' on mixed\.$#'
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 2
-			path: src/Commands/InstallCommand.php
-
-		-
-			message: '#^Parameter \#1 \$array of function ksort expects array, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Commands/InstallCommand.php
-
-		-
-			message: '#^Parameter \#1 \$json of function json_decode expects string, string\|false given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Commands/InstallCommand.php
-
-		-
-			message: '#^Parameter \#2 \$array of function array_key_exists expects array, mixed given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/Commands/InstallCommand.php
-
-		-
 			message: '#^Parameter \#1 \$timeout of method Symfony\\Component\\Process\\Process\:\:setTimeout\(\) expects float\|null, mixed given\.$#'
 			identifier: argument.type
 			count: 1
@@ -629,3 +605,9 @@ parameters:
 			identifier: argument.templateType
 			count: 2
 			path: src/Models/SessionShare.php
+
+		-
+			message: '#^Cannot cast mixed to string\.$#'
+			identifier: cast.string
+			count: 1
+			path: src/ServerManagerServiceProvider.php
