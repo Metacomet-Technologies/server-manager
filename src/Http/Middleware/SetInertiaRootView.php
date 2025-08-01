@@ -11,7 +11,7 @@ class SetInertiaRootView
     public function handle(Request $request, Closure $next)
     {
         Inertia::setRootView('server-manager::app');
-        
+
         return $next($request);
     }
 }

@@ -53,7 +53,6 @@ class InstallCommand extends Command
         return self::SUCCESS;
     }
 
-
     protected function configureBroadcasting(): void
     {
         $this->info('Configuring Laravel Reverb...');
@@ -73,5 +72,4 @@ class InstallCommand extends Command
         $this->info('Reverb configured successfully!');
         $this->line('Remember to start Reverb with: php artisan reverb:start');
     }
-
 }

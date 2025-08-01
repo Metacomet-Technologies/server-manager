@@ -76,7 +76,7 @@ class ServerManagerServiceProvider extends PackageServiceProvider
         // Set custom Inertia root view for server-manager routes
         if (config('server-manager.web.enabled', true)) {
             $this->loadViewsFrom(__DIR__.'/../resources/views', 'server-manager');
-            
+
             // Configure Inertia to use our custom layout for server-manager routes
             if ($this->app->has('inertia')) {
                 $this->app->afterResolving('inertia', function ($inertia) {
@@ -85,7 +85,7 @@ class ServerManagerServiceProvider extends PackageServiceProvider
                     }
                 });
             }
-            
+
             // Register asset routes
             $this->registerAssetRoutes();
         }
@@ -98,19 +98,19 @@ class ServerManagerServiceProvider extends PackageServiceProvider
             ], 'server-manager-views');
         }
     }
-    
+
     protected function registerAssetRoutes(): void
     {
         $prefix = config('server-manager.web.prefix', 'server-manager');
-        
+
         // Serve assets directly from the package
         \Route::get($prefix.'/assets/{path}', function ($path) {
             $assetPath = __DIR__.'/../dist/'.$path;
-            
-            if (!file_exists($assetPath)) {
+
+            if (! file_exists($assetPath)) {
                 abort(404);
             }
-            
+
             $mimeTypes = [
                 'css' => 'text/css',
                 'js' => 'application/javascript',
@@ -126,10 +126,10 @@ class ServerManagerServiceProvider extends PackageServiceProvider
                 'png' => 'image/png',
                 'ico' => 'image/x-icon',
             ];
-            
+
             $extension = pathinfo($path, PATHINFO_EXTENSION);
             $mimeType = $mimeTypes[$extension] ?? 'application/octet-stream';
-            
+
             return response()->file($assetPath, [
                 'Content-Type' => $mimeType,
                 'Cache-Control' => 'public, max-age=31536000',
