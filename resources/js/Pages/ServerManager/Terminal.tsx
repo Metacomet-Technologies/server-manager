@@ -28,32 +28,45 @@ export default function TerminalPage({ session, canExecute }: TerminalPageProps)
     const terminalRef = useRef<TerminalHandle>(null);
     const [connectionError, setConnectionError] = useState<string | null>(null);
     const [isConnected, setIsConnected] = useState(false);
+    const websocketEnabled = typeof window !== 'undefined' && 'Echo' in window;
     
-    // Use the Laravel Echo React hook
-    const { leaveChannel } = useEcho(
+    // Use the Laravel Echo React hook only if WebSockets are available
+    const echoHook = websocketEnabled ? useEcho(
         `private-server-manager.session.${session.id}`,
         '.terminal.output',
         (event: TerminalOutput) => {
             terminalRef.current?.writeOutput(event.output, event.type);
         }
-    );
+    ) : { leaveChannel: () => {} };
+    
+    const { leaveChannel } = echoHook;
 
     useEffect(() => {
+        if (!websocketEnabled) {
+            setConnectionError('WebSocket support is not configured. Real-time terminal functionality is disabled.');
+            return;
+        }
+        
         // Set connected status when component mounts
         setIsConnected(true);
         
         // Handle connection errors
-        window.Echo.connector.channels[`private-server-manager.session.${session.id}`]?.subscription?.bind('pusher:subscription_error', (error: any) => {
-            console.error('WebSocket error:', error);
-            setConnectionError('Connection error. Please refresh the page.');
-            setIsConnected(false);
-        });
+        if (window.Echo?.connector?.channels) {
+            const channel = window.Echo.connector.channels[`private-server-manager.session.${session.id}`];
+            if (channel?.subscription) {
+                channel.subscription.bind('pusher:subscription_error', (error: any) => {
+                    console.error('WebSocket error:', error);
+                    setConnectionError('Connection error. Please refresh the page.');
+                    setIsConnected(false);
+                });
+            }
+        }
 
         return () => {
             // Cleanup is handled by useEcho hook
             setIsConnected(false);
         };
-    }, [session.id]);
+    }, [session.id, websocketEnabled]);
 
     const handleCommand = async (command: string) => {
         try {

@@ -13,6 +13,14 @@
         <!-- Server Manager Styles -->
         <link rel="stylesheet" href="{{ route('server-manager.assets', 'css/app.css') }}">
 
+        <!-- WebSocket Configuration -->
+        <script>
+            window.serverManagerConfig = {
+                websocketEnabled: {{ config('server-manager.websocket_enabled', false) ? 'true' : 'false' }},
+                prefix: '{{ config('server-manager.web.prefix', 'server-manager') }}'
+            };
+        </script>
+
         <!-- Scripts -->
         @routes('server-manager')
         <script type="module" src="{{ route('server-manager.assets', 'js/server-manager.js') }}"></script>
