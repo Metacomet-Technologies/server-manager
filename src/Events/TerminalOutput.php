@@ -32,6 +32,7 @@ class TerminalOutput implements ShouldBroadcast
         return 'terminal.output';
     }
 
+    /** @return array<string, mixed> */
     public function broadcastWith(): array
     {
         return [

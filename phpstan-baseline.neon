@@ -1,0 +1,631 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Binary operation "\." between ''\- Visit '' and mixed results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: src/Commands/InstallCommand.php
+
+		-
+			message: '#^Binary operation "\." between non\-falsy\-string and mixed results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: src/Commands/InstallCommand.php
+
+		-
+			message: '#^Cannot access offset ''dependencies''\|''devDependencies'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: src/Commands/InstallCommand.php
+
+		-
+			message: '#^Parameter \#1 \$array of function ksort expects array, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Commands/InstallCommand.php
+
+		-
+			message: '#^Parameter \#1 \$json of function json_decode expects string, string\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Commands/InstallCommand.php
+
+		-
+			message: '#^Parameter \#2 \$array of function array_key_exists expects array, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Commands/InstallCommand.php
+
+		-
+			message: '#^Parameter \#1 \$timeout of method Symfony\\Component\\Process\\Process\:\:setTimeout\(\) expects float\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Connections/LocalConnection.php
+
+		-
+			message: '#^Method Metacomet\\ServerManager\\Connections\\PhpSeclibConnection\:\:getOutput\(\) should return string\|null but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Connections/PhpSeclibConnection.php
+
+		-
+			message: '#^Parameter \#1 \$key of static method phpseclib3\\Crypt\\PublicKeyLoader\:\:load\(\) expects array\|string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Connections/PhpSeclibConnection.php
+
+		-
+			message: '#^Parameter \#1 \$string of function trim expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Connections/PhpSeclibConnection.php
+
+		-
+			message: '#^Parameter \#1 \$string of function trim expects string, string\|true given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Connections/PhpSeclibConnection.php
+
+		-
+			message: '#^Parameter \#1 \$username of method phpseclib3\\Net\\SSH2\:\:login\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 2
+			path: src/Connections/PhpSeclibConnection.php
+
+		-
+			message: '#^Parameter \#2 \$password of static method phpseclib3\\Crypt\\PublicKeyLoader\:\:load\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Connections/PhpSeclibConnection.php
+
+		-
+			message: '#^Parameter \#2 \$port of class phpseclib3\\Net\\SSH2 constructor expects int, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Connections/PhpSeclibConnection.php
+
+		-
+			message: '#^Parameter \#2 \.\.\.\$args of method phpseclib3\\Net\\SSH2\:\:login\(\) expects array\<array\>\|phpseclib3\\Crypt\\Common\\PrivateKey\|phpseclib3\\System\\SSH\\Agent\|string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Connections/PhpSeclibConnection.php
+
+		-
+			message: '#^Method Metacomet\\ServerManager\\Connections\\Ssh2Connection\:\:getOutput\(\) should return string\|null but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Connections/Ssh2Connection.php
+
+		-
+			message: '#^Parameter \#1 \$host of function ssh2_connect expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Connections/Ssh2Connection.php
+
+		-
+			message: '#^Parameter \#1 \$session of function ssh2_exec expects resource, resource\|null given\.$#'
+			identifier: argument.type
+			count: 3
+			path: src/Connections/Ssh2Connection.php
+
+		-
+			message: '#^Parameter \#1 \$stream of function fclose expects resource, resource\|false given\.$#'
+			identifier: argument.type
+			count: 2
+			path: src/Connections/Ssh2Connection.php
+
+		-
+			message: '#^Parameter \#1 \$stream of function stream_get_contents expects resource, resource\|false given\.$#'
+			identifier: argument.type
+			count: 2
+			path: src/Connections/Ssh2Connection.php
+
+		-
+			message: '#^Parameter \#1 \$stream of function stream_set_blocking expects resource, resource\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Connections/Ssh2Connection.php
+
+		-
+			message: '#^Parameter \#1 \$string of function trim expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Connections/Ssh2Connection.php
+
+		-
+			message: '#^Parameter \#2 \$port of function ssh2_connect expects int, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Connections/Ssh2Connection.php
+
+		-
+			message: '#^Parameter \#2 \$username of function ssh2_auth_password expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Connections/Ssh2Connection.php
+
+		-
+			message: '#^Parameter \#2 \$username of function ssh2_auth_pubkey_file expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Connections/Ssh2Connection.php
+
+		-
+			message: '#^Parameter \#3 \$password of function ssh2_auth_password expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Connections/Ssh2Connection.php
+
+		-
+			message: '#^Parameter \#5 \$passphrase of function ssh2_auth_pubkey_file expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Connections/Ssh2Connection.php
+
+		-
+			message: '#^Property Metacomet\\ServerManager\\Connections\\Ssh2Connection\:\:\$connection \(resource\|null\) does not accept resource\|false\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: src/Connections/Ssh2Connection.php
+
+		-
+			message: '#^Part \$prefix \(mixed\) of encapsed string cannot be cast to string\.$#'
+			identifier: encapsedStringPart.nonString
+			count: 1
+			path: src/Events/TerminalOutput.php
+
+		-
+			message: '#^Binary operation "\." between mixed and mixed results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: src/Http/Controllers/CommandController.php
+
+		-
+			message: '#^Cannot access property \$id on Illuminate\\Foundation\\Auth\\User\|null\.$#'
+			identifier: property.nonObject
+			count: 8
+			path: src/Http/Controllers/CommandController.php
+
+		-
+			message: '#^Parameter \#1 \$command of method Metacomet\\ServerManager\\Contracts\\ConnectionInterface\:\:execute\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Http/Controllers/CommandController.php
+
+		-
+			message: '#^Parameter \#1 \$command of method Metacomet\\ServerManager\\Contracts\\ConnectionInterface\:\:executeAsync\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Http/Controllers/CommandController.php
+
+		-
+			message: '#^Parameter \#3 \$length of function substr expects int\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Http/Controllers/CommandController.php
+
+		-
+			message: '#^Cannot access property \$id on Illuminate\\Foundation\\Auth\\User\|null\.$#'
+			identifier: property.nonObject
+			count: 2
+			path: src/Http/Controllers/ServerController.php
+
+		-
+			message: '#^Binary operation "\." between ''required\|exists\:'' and mixed results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 1
+			path: src/Http/Controllers/SessionController.php
+
+		-
+			message: '#^Cannot access property \$id on Illuminate\\Foundation\\Auth\\User\|null\.$#'
+			identifier: property.nonObject
+			count: 6
+			path: src/Http/Controllers/SessionController.php
+
+		-
+			message: '#^Parameter \#1 \$column of method Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\:\:orWhere\(\) expects array\<int\|model property of Illuminate\\Database\\Eloquent\\Model, mixed\>\|\(Closure\(Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\)\: Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\)\|\(Closure\(Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\)\: void\)\|Illuminate\\Contracts\\Database\\Query\\Expression\|model property of Illuminate\\Database\\Eloquent\\Model, ''expires_at'' given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Http/Controllers/SessionController.php
+
+		-
+			message: '#^Parameter \#1 \$column of method Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\:\:where\(\) expects array\<int\|model property of Illuminate\\Database\\Eloquent\\Model, mixed\>\|\(Closure\(Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\)\: Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\)\|\(Closure\(Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\)\: void\)\|Illuminate\\Contracts\\Database\\Query\\Expression\|model property of Illuminate\\Database\\Eloquent\\Model, ''shared_with_user_id'' given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Http/Controllers/SessionController.php
+
+		-
+			message: '#^Parameter \#2 \$server of method Metacomet\\ServerManager\\Services\\SessionManager\:\:createSession\(\) expects Metacomet\\ServerManager\\Models\\Server, Illuminate\\Database\\Eloquent\\Collection\<int, Metacomet\\ServerManager\\Models\\Server\>\|Metacomet\\ServerManager\\Models\\Server given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Http/Controllers/SessionController.php
+
+		-
+			message: '#^Parameter \#3 \$name of method Metacomet\\ServerManager\\Services\\SessionManager\:\:createSession\(\) expects string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Http/Controllers/SessionController.php
+
+		-
+			message: '#^Parameter \#4 \$metadata of method Metacomet\\ServerManager\\Services\\SessionManager\:\:createSession\(\) expects array\<string, mixed\>, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Http/Controllers/SessionController.php
+
+		-
+			message: '#^Cannot access property \$id on Illuminate\\Foundation\\Auth\\User\|null\.$#'
+			identifier: property.nonObject
+			count: 3
+			path: src/Http/Controllers/TerminalWebSocketController.php
+
+		-
+			message: '#^Parameter \#2 \$cols of method Metacomet\\ServerManager\\Services\\TerminalService\:\:resize\(\) expects int, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Http/Controllers/TerminalWebSocketController.php
+
+		-
+			message: '#^Parameter \#2 \$command of method Metacomet\\ServerManager\\Services\\TerminalService\:\:executeCommand\(\) expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Http/Controllers/TerminalWebSocketController.php
+
+		-
+			message: '#^Parameter \#3 \$rows of method Metacomet\\ServerManager\\Services\\TerminalService\:\:resize\(\) expects int, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Http/Controllers/TerminalWebSocketController.php
+
+		-
+			message: '#^Call to static method setRootView\(\) on an unknown class Inertia\\Inertia\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/Controllers/Web/BaseWebController.php
+
+		-
+			message: '#^Call to static method render\(\) on an unknown class Inertia\\Inertia\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/Controllers/Web/DashboardController.php
+
+		-
+			message: '#^Method Metacomet\\ServerManager\\Http\\Controllers\\Web\\DashboardController\:\:index\(\) has invalid return type Inertia\\Response\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/Controllers/Web/DashboardController.php
+
+		-
+			message: '#^Call to an undefined method Metacomet\\ServerManager\\Services\\SessionManager\:\:createConnection\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: src/Http/Controllers/Web/ServerWebController.php
+
+		-
+			message: '#^Call to static method render\(\) on an unknown class Inertia\\Inertia\.$#'
+			identifier: class.notFound
+			count: 4
+			path: src/Http/Controllers/Web/ServerWebController.php
+
+		-
+			message: '#^Method Metacomet\\ServerManager\\Http\\Controllers\\Web\\ServerWebController\:\:create\(\) has invalid return type Inertia\\Response\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/Controllers/Web/ServerWebController.php
+
+		-
+			message: '#^Method Metacomet\\ServerManager\\Http\\Controllers\\Web\\ServerWebController\:\:edit\(\) has invalid return type Inertia\\Response\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/Controllers/Web/ServerWebController.php
+
+		-
+			message: '#^Method Metacomet\\ServerManager\\Http\\Controllers\\Web\\ServerWebController\:\:index\(\) has invalid return type Inertia\\Response\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/Controllers/Web/ServerWebController.php
+
+		-
+			message: '#^Method Metacomet\\ServerManager\\Http\\Controllers\\Web\\ServerWebController\:\:show\(\) has invalid return type Inertia\\Response\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/Controllers/Web/ServerWebController.php
+
+		-
+			message: '#^Parameter \#1 \$ability of static method Illuminate\\Support\\Facades\\Gate\:\:allows\(\) expects iterable\|string\|UnitEnum, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Http/Controllers/Web/ServerWebController.php
+
+		-
+			message: '#^Call to an undefined method Metacomet\\ServerManager\\Services\\SessionManager\:\:createLocalSession\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: src/Http/Controllers/Web/SessionWebController.php
+
+		-
+			message: '#^Call to an undefined method Metacomet\\ServerManager\\Services\\SessionManager\:\:endSession\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: src/Http/Controllers/Web/SessionWebController.php
+
+		-
+			message: '#^Call to static method render\(\) on an unknown class Inertia\\Inertia\.$#'
+			identifier: class.notFound
+			count: 3
+			path: src/Http/Controllers/Web/SessionWebController.php
+
+		-
+			message: '#^Call to static method where\(\) on an unknown class App\\Models\\User\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/Controllers/Web/SessionWebController.php
+
+		-
+			message: '#^Method Metacomet\\ServerManager\\Http\\Controllers\\Web\\SessionWebController\:\:create\(\) has invalid return type Inertia\\Response\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/Controllers/Web/SessionWebController.php
+
+		-
+			message: '#^Method Metacomet\\ServerManager\\Http\\Controllers\\Web\\SessionWebController\:\:index\(\) has invalid return type Inertia\\Response\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/Controllers/Web/SessionWebController.php
+
+		-
+			message: '#^Method Metacomet\\ServerManager\\Http\\Controllers\\Web\\SessionWebController\:\:share\(\) has invalid return type Inertia\\Response\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/Controllers/Web/SessionWebController.php
+
+		-
+			message: '#^Parameter \#1 \$ability of static method Illuminate\\Support\\Facades\\Gate\:\:allows\(\) expects iterable\|string\|UnitEnum, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Http/Controllers/Web/SessionWebController.php
+
+		-
+			message: '#^Parameter \#1 \$attributes of method Illuminate\\Database\\Eloquent\\Model\:\:update\(\) expects array\<model property of Metacomet\\ServerManager\\Models\\SessionShare, mixed\>, array\<string, mixed\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Http/Controllers/Web/SessionWebController.php
+
+		-
+			message: '#^Parameter \#1 \$attributes of static method Illuminate\\Database\\Eloquent\\Builder\<Metacomet\\ServerManager\\Models\\SessionShare\>\:\:create\(\) expects array\<model property of Metacomet\\ServerManager\\Models\\SessionShare, mixed\>, array\<string, mixed\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Http/Controllers/Web/SessionWebController.php
+
+		-
+			message: '#^Parameter \#1 \$column of method Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\:\:where\(\) expects array\<int\|model property of Illuminate\\Database\\Eloquent\\Model, mixed\>\|\(Closure\(Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\)\: Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\)\|\(Closure\(Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\)\: void\)\|Illuminate\\Contracts\\Database\\Query\\Expression\|model property of Illuminate\\Database\\Eloquent\\Model, ''user_id'' given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Http/Controllers/Web/SessionWebController.php
+
+		-
+			message: '#^Parameter \#1 \$column of method Illuminate\\Database\\Eloquent\\Builder\<Metacomet\\ServerManager\\Models\\SessionShare\>\:\:where\(\) expects array\<int\|model property of Metacomet\\ServerManager\\Models\\SessionShare, mixed\>\|\(Closure\(Illuminate\\Database\\Eloquent\\Builder\<Metacomet\\ServerManager\\Models\\SessionShare\>\)\: Illuminate\\Database\\Eloquent\\Builder\<Metacomet\\ServerManager\\Models\\SessionShare\>\)\|\(Closure\(Illuminate\\Database\\Eloquent\\Builder\<Metacomet\\ServerManager\\Models\\SessionShare\>\)\: void\)\|Illuminate\\Contracts\\Database\\Query\\Expression\|model property of Metacomet\\ServerManager\\Models\\SessionShare, ''user_id'' given\.$#'
+			identifier: argument.type
+			count: 2
+			path: src/Http/Controllers/Web/SessionWebController.php
+
+		-
+			message: '#^Parameter \#1 \$userId of method Metacomet\\ServerManager\\Services\\SessionManager\:\:createSession\(\) expects string, int\|string\|null given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Http/Controllers/Web/SessionWebController.php
+
+		-
+			message: '#^Parameter \#2 \$server of method Metacomet\\ServerManager\\Services\\SessionManager\:\:createSession\(\) expects Metacomet\\ServerManager\\Models\\Server, Illuminate\\Database\\Eloquent\\Collection\<int, Metacomet\\ServerManager\\Models\\Server\>\|Metacomet\\ServerManager\\Models\\Server given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Http/Controllers/Web/SessionWebController.php
+
+		-
+			message: '#^Parameter \#3 \$name of method Metacomet\\ServerManager\\Services\\SessionManager\:\:createSession\(\) expects string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Http/Controllers/Web/SessionWebController.php
+
+		-
+			message: '#^Relation ''sharedUsers'' is not found in Metacomet\\ServerManager\\Models\\Session model\.$#'
+			identifier: larastan.relationExistence
+			count: 1
+			path: src/Http/Controllers/Web/SessionWebController.php
+
+		-
+			message: '#^Relation ''user'' is not found in Metacomet\\ServerManager\\Models\\SessionShare model\.$#'
+			identifier: larastan.relationExistence
+			count: 1
+			path: src/Http/Controllers/Web/SessionWebController.php
+
+		-
+			message: '#^Call to an undefined method Metacomet\\ServerManager\\Models\\Session\:\:sharedUsers\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: src/Http/Controllers/Web/TerminalController.php
+
+		-
+			message: '#^Call to static method render\(\) on an unknown class Inertia\\Inertia\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/Controllers/Web/TerminalController.php
+
+		-
+			message: '#^Method Metacomet\\ServerManager\\Http\\Controllers\\Web\\TerminalController\:\:show\(\) has invalid return type Inertia\\Response\.$#'
+			identifier: class.notFound
+			count: 1
+			path: src/Http/Controllers/Web/TerminalController.php
+
+		-
+			message: '#^Method Metacomet\\ServerManager\\Models\\CommandHistory\:\:getTable\(\) should return string but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Models/CommandHistory.php
+
+		-
+			message: '#^Method Metacomet\\ServerManager\\Models\\CommandHistory\:\:session\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Models/CommandHistory.php
+
+		-
+			message: '#^Method Metacomet\\ServerManager\\Models\\CommandHistory\:\:user\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Models/CommandHistory.php
+
+		-
+			message: '#^Parameter \#1 \$related of method Illuminate\\Database\\Eloquent\\Model\:\:belongsTo\(\) expects class\-string\<Illuminate\\Database\\Eloquent\\Model\>, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Models/CommandHistory.php
+
+		-
+			message: '#^Unable to resolve the template type TRelatedModel in call to method Illuminate\\Database\\Eloquent\\Model\:\:belongsTo\(\)$#'
+			identifier: argument.templateType
+			count: 1
+			path: src/Models/CommandHistory.php
+
+		-
+			message: '#^Method Metacomet\\ServerManager\\Models\\Server\:\:activeSessions\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\HasMany does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Models/Server.php
+
+		-
+			message: '#^Method Metacomet\\ServerManager\\Models\\Server\:\:connectionConfig\(\) return type with generic class Illuminate\\Database\\Eloquent\\Casts\\Attribute does not specify its types\: TGet, TSet$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Models/Server.php
+
+		-
+			message: '#^Method Metacomet\\ServerManager\\Models\\Server\:\:getTable\(\) should return string but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Models/Server.php
+
+		-
+			message: '#^Method Metacomet\\ServerManager\\Models\\Server\:\:sessions\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\HasMany does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Models/Server.php
+
+		-
+			message: '#^Method Metacomet\\ServerManager\\Models\\Server\:\:user\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Models/Server.php
+
+		-
+			message: '#^Parameter \#1 \$column of method Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\:\:where\(\) expects array\<int\|model property of Illuminate\\Database\\Eloquent\\Model, mixed\>\|\(Closure\(Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\)\: Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\)\|\(Closure\(Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\)\: void\)\|Illuminate\\Contracts\\Database\\Query\\Expression\|model property of Illuminate\\Database\\Eloquent\\Model, ''is_active'' given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Models/Server.php
+
+		-
+			message: '#^Parameter \#1 \$related of method Illuminate\\Database\\Eloquent\\Model\:\:belongsTo\(\) expects class\-string\<Illuminate\\Database\\Eloquent\\Model\>, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Models/Server.php
+
+		-
+			message: '#^Unable to resolve the template type TRelatedModel in call to method Illuminate\\Database\\Eloquent\\Model\:\:belongsTo\(\)$#'
+			identifier: argument.templateType
+			count: 1
+			path: src/Models/Server.php
+
+		-
+			message: '#^Method Metacomet\\ServerManager\\Models\\Session\:\:commandHistory\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\HasMany does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Models/Session.php
+
+		-
+			message: '#^Method Metacomet\\ServerManager\\Models\\Session\:\:getTable\(\) should return string but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Models/Session.php
+
+		-
+			message: '#^Method Metacomet\\ServerManager\\Models\\Session\:\:server\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Models/Session.php
+
+		-
+			message: '#^Method Metacomet\\ServerManager\\Models\\Session\:\:shares\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\HasMany does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Models/Session.php
+
+		-
+			message: '#^Method Metacomet\\ServerManager\\Models\\Session\:\:user\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Models/Session.php
+
+		-
+			message: '#^Parameter \#1 \$column of method Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\:\:orWhere\(\) expects array\<int\|model property of Illuminate\\Database\\Eloquent\\Model, mixed\>\|\(Closure\(Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\)\: Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\)\|\(Closure\(Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\)\: void\)\|Illuminate\\Contracts\\Database\\Query\\Expression\|model property of Illuminate\\Database\\Eloquent\\Model, ''expires_at'' given\.$#'
+			identifier: argument.type
+			count: 2
+			path: src/Models/Session.php
+
+		-
+			message: '#^Parameter \#1 \$column of method Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\:\:where\(\) expects array\<int\|model property of Illuminate\\Database\\Eloquent\\Model, mixed\>\|\(Closure\(Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\)\: Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\)\|\(Closure\(Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\)\: void\)\|Illuminate\\Contracts\\Database\\Query\\Expression\|model property of Illuminate\\Database\\Eloquent\\Model, ''permission'' given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Models/Session.php
+
+		-
+			message: '#^Parameter \#1 \$column of method Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\:\:where\(\) expects array\<int\|model property of Illuminate\\Database\\Eloquent\\Model, mixed\>\|\(Closure\(Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\)\: Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\)\|\(Closure\(Illuminate\\Database\\Eloquent\\Builder\<Illuminate\\Database\\Eloquent\\Model\>\)\: void\)\|Illuminate\\Contracts\\Database\\Query\\Expression\|model property of Illuminate\\Database\\Eloquent\\Model, ''shared_with_user_id'' given\.$#'
+			identifier: argument.type
+			count: 2
+			path: src/Models/Session.php
+
+		-
+			message: '#^Parameter \#1 \$related of method Illuminate\\Database\\Eloquent\\Model\:\:belongsTo\(\) expects class\-string\<Illuminate\\Database\\Eloquent\\Model\>, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Models/Session.php
+
+		-
+			message: '#^Unable to resolve the template type TRelatedModel in call to method Illuminate\\Database\\Eloquent\\Model\:\:belongsTo\(\)$#'
+			identifier: argument.templateType
+			count: 1
+			path: src/Models/Session.php
+
+		-
+			message: '#^Method Metacomet\\ServerManager\\Models\\SessionShare\:\:getTable\(\) should return string but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Models/SessionShare.php
+
+		-
+			message: '#^Method Metacomet\\ServerManager\\Models\\SessionShare\:\:session\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Models/SessionShare.php
+
+		-
+			message: '#^Method Metacomet\\ServerManager\\Models\\SessionShare\:\:sharedByUser\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Models/SessionShare.php
+
+		-
+			message: '#^Method Metacomet\\ServerManager\\Models\\SessionShare\:\:sharedWithUser\(\) return type with generic class Illuminate\\Database\\Eloquent\\Relations\\BelongsTo does not specify its types\: TRelatedModel, TDeclaringModel$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Models/SessionShare.php
+
+		-
+			message: '#^Parameter \#1 \$related of method Illuminate\\Database\\Eloquent\\Model\:\:belongsTo\(\) expects class\-string\<Illuminate\\Database\\Eloquent\\Model\>, mixed given\.$#'
+			identifier: argument.type
+			count: 2
+			path: src/Models/SessionShare.php
+
+		-
+			message: '#^Unable to resolve the template type TRelatedModel in call to method Illuminate\\Database\\Eloquent\\Model\:\:belongsTo\(\)$#'
+			identifier: argument.templateType
+			count: 2
+			path: src/Models/SessionShare.php

@@ -24,10 +24,10 @@ class ServerManagerServiceProvider extends PackageServiceProvider
         Gate::policy(\Metacomet\ServerManager\Models\Session::class, \Metacomet\ServerManager\Policies\SessionPolicy::class);
 
         // Register the local server access gate
-        Gate::define(config('server-manager.local_server_gate', 'server-manager:access-local'), function ($user) {
+        Gate::define(is_string(config('server-manager.local_server_gate', 'server-manager:access-local')) ? config('server-manager.local_server_gate', 'server-manager:access-local') : 'server-manager:access-local', function (mixed $user): bool {
             // By default, only allow if user has a specific permission
             // This can be customized in the app
-            return $user->can('access-local-server');
+            return is_object($user) && method_exists($user, 'can') ? $user->can('access-local-server') : false;
         });
 
         // Register broadcasting channels
@@ -69,7 +69,7 @@ class ServerManagerServiceProvider extends PackageServiceProvider
         }
     }
 
-    public function boot()
+    public function boot(): void
     {
         parent::boot();
 
@@ -86,9 +86,8 @@ class ServerManagerServiceProvider extends PackageServiceProvider
 
             $this->publishes([
                 __DIR__.'/../package.json' => base_path('package-server-manager.json'),
-                __DIR__.'/../vite.config.js' => base_path('vite.config.server-manager.js'),
+                __DIR__.'/../vite.config.mts' => base_path('vite.config.server-manager.mts'),
                 __DIR__.'/../tailwind.config.js' => base_path('tailwind.config.server-manager.js'),
-                __DIR__.'/../postcss.config.js' => base_path('postcss.config.server-manager.js'),
             ], 'server-manager-build');
         }
     }

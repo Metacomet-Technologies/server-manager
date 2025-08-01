@@ -8,11 +8,13 @@ return new class extends Migration
 {
     protected function getUserModel(): string
     {
+        /** @var string */
         return config('auth.providers.users.model', 'App\\Models\\User');
     }
 
-    public function up()
+    public function up(): void
     {
+        /** @var array<string, string> */
         $tablePrefix = config('server-manager.tables', [
             'servers' => 'sm_servers',
             'sessions' => 'sm_sessions',
@@ -87,8 +89,9 @@ return new class extends Migration
         });
     }
 
-    public function down()
+    public function down(): void
     {
+        /** @var array<string, string> */
         $tablePrefix = config('server-manager.tables', [
             'servers' => 'sm_servers',
             'sessions' => 'sm_sessions',

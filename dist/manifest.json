@@ -94,7 +94,7 @@
       "_Layout.js"
     ],
     "css": [
-      "css/Terminal.css"
+      "assets/Terminal.css"
     ]
   },
   "resources/js/app.tsx": {

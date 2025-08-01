@@ -35,6 +35,7 @@ class SessionController extends Controller
 
     public function store(Request $request): JsonResponse
     {
+        /** @var array<string, mixed> $validated */
         $validated = $request->validate([
             'server_id' => 'required|exists:'.config('server-manager.tables.servers').',id',
             'name' => 'nullable|string|max:255',
@@ -87,6 +88,7 @@ class SessionController extends Controller
     {
         $this->authorize('share', $session);
 
+        /** @var array<string, mixed> $validated */
         $validated = $request->validate([
             'user_id' => 'required|exists:users,id',
             'permission' => 'required|in:view,execute',
@@ -116,7 +118,7 @@ class SessionController extends Controller
         return response()->json($share->load('sharedWithUser'));
     }
 
-    public function unshare(Request $request, Session $session, $userId): JsonResponse
+    public function unshare(Request $request, Session $session, string|int $userId): JsonResponse
     {
         $this->authorize('share', $session);
 

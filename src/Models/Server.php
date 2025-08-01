@@ -20,8 +20,13 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string|null $private_key
  * @property string|null $key_passphrase
  * @property bool $is_local
- * @property array|null $metadata
- * @property-read array $connectionConfig
+ * @property array<string, mixed>|null $metadata
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property-read array<string, mixed> $connectionConfig
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, Session> $sessions
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, Session> $activeSessions
+ * @property-read mixed $user
  */
 class Server extends Model
 {
@@ -29,6 +34,7 @@ class Server extends Model
 
     protected $guarded = ['id'];
 
+    /** @var array<string, string> */
     protected $casts = [
         'metadata' => 'array',
         'is_local' => 'boolean',
@@ -43,7 +49,7 @@ class Server extends Model
         'key_passphrase',
     ];
 
-    public function getTable()
+    public function getTable(): string
     {
         return config('server-manager.tables.servers', 'sm_servers');
     }
@@ -66,7 +72,7 @@ class Server extends Model
     protected function connectionConfig(): Attribute
     {
         return Attribute::make(
-            get: fn () => [
+            get: fn (): array => [
                 'host' => $this->host,
                 'port' => $this->port,
                 'username' => $this->username,

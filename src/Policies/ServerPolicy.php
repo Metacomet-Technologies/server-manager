@@ -9,18 +9,18 @@ class ServerPolicy
 {
     use HandlesAuthorization;
 
-    public function view($user, Server $server): bool
+    public function view(mixed $user, Server $server): bool
     {
-        return (string) $server->user_id === (string) $user->id;
+        return (string) $server->user_id === (string) (is_object($user) && property_exists($user, 'id') ? $user->id : null);
     }
 
-    public function update($user, Server $server): bool
+    public function update(mixed $user, Server $server): bool
     {
-        return (string) $server->user_id === (string) $user->id;
+        return (string) $server->user_id === (string) (is_object($user) && property_exists($user, 'id') ? $user->id : null);
     }
 
-    public function delete($user, Server $server): bool
+    public function delete(mixed $user, Server $server): bool
     {
-        return (string) $server->user_id === (string) $user->id;
+        return (string) $server->user_id === (string) (is_object($user) && property_exists($user, 'id') ? $user->id : null);
     }
 }

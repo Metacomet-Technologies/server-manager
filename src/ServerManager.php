@@ -11,26 +11,31 @@ class ServerManager
 {
     public function __construct(private SessionManager $sessionManager) {}
 
+    /** @return \Illuminate\Database\Eloquent\Builder<Server> */
     public function servers(): \Illuminate\Database\Eloquent\Builder
     {
         return Server::query();
     }
 
+    /** @return \Illuminate\Database\Eloquent\Builder<Session> */
     public function sessions(): \Illuminate\Database\Eloquent\Builder
     {
         return Session::query();
     }
 
+    /** @param array<string, mixed> $data */
     public function createServer(array $data): Server
     {
         return Server::create($data);
     }
 
+    /** @param array<string, mixed> $metadata */
     public function createSession(string $userId, Server $server, ?string $name = null, array $metadata = []): Session
     {
         return $this->sessionManager->createSession($userId, $server, $name, $metadata);
     }
 
+    /** @return array<string, mixed> */
     public function testConnection(Server $server): array
     {
         try {
@@ -41,7 +46,7 @@ class ServerManager
 
             return [
                 'success' => true,
-                'message' => trim($result['output']),
+                'message' => trim(is_string($result['output']) ? $result['output'] : ''),
             ];
         } catch (\Exception $e) {
             return [
@@ -51,6 +56,7 @@ class ServerManager
         }
     }
 
+    /** @return array<string, mixed> */
     public function execute(Session $session, string $command): array
     {
         $connection = $this->sessionManager->getConnection($session);

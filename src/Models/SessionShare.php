@@ -13,6 +13,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string|int $shared_by_user_id
  * @property string $permission
  * @property \Carbon\Carbon|null $expires_at
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property-read Session $session
+ * @property-read mixed $sharedWithUser
+ * @property-read mixed $sharedByUser
  */
 class SessionShare extends Model
 {
@@ -20,11 +25,12 @@ class SessionShare extends Model
 
     protected $guarded = ['id'];
 
+    /** @var array<string, string> */
     protected $casts = [
         'expires_at' => 'datetime',
     ];
 
-    public function getTable()
+    public function getTable(): string
     {
         return config('server-manager.tables.session_shares', 'sm_session_shares');
     }

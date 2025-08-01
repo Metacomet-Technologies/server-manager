@@ -14,9 +14,14 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property string|null $name
  * @property bool $is_active
  * @property bool $is_shared
- * @property array|null $metadata
+ * @property array<string, mixed>|null $metadata
  * @property \Carbon\Carbon|null $last_activity_at
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
  * @property-read Server $server
+ * @property-read mixed $user
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, SessionShare> $shares
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, CommandHistory> $commandHistory
  */
 class Session extends Model
 {
@@ -24,6 +29,7 @@ class Session extends Model
 
     protected $guarded = ['id'];
 
+    /** @var array<string, string> */
     protected $casts = [
         'metadata' => 'array',
         'is_active' => 'boolean',
@@ -31,7 +37,7 @@ class Session extends Model
         'last_activity_at' => 'datetime',
     ];
 
-    public function getTable()
+    public function getTable(): string
     {
         return config('server-manager.tables.sessions', 'sm_sessions');
     }
@@ -56,7 +62,7 @@ class Session extends Model
         return $this->hasMany(CommandHistory::class);
     }
 
-    public function isSharedWith($userId): bool
+    public function isSharedWith(string|int $userId): bool
     {
         return $this->shares()
             ->where('shared_with_user_id', $userId)
@@ -67,12 +73,12 @@ class Session extends Model
             ->exists();
     }
 
-    public function canUserAccess($userId): bool
+    public function canUserAccess(string|int $userId): bool
     {
         return (string) $this->user_id === (string) $userId || $this->isSharedWith($userId);
     }
 
-    public function canUserExecute($userId): bool
+    public function canUserExecute(string|int $userId): bool
     {
         if ((string) $this->user_id === (string) $userId) {
             return true;

@@ -8,8 +8,10 @@ use Metacomet\ServerManager\Models\Session;
 
 class SessionManager
 {
+    /** @var array<string, ConnectionInterface> */
     private array $connections = [];
 
+    /** @param array<string, mixed> $metadata */
     public function createSession(string $userId, Server $server, ?string $name = null, array $metadata = []): Session
     {
         $session = Session::create([
@@ -59,7 +61,7 @@ class SessionManager
     public function cleanupInactiveSessions(): int
     {
         $ttl = config('server-manager.sessions.ttl', 3600);
-        $cutoff = now()->subSeconds($ttl);
+        $cutoff = now()->subSeconds(is_int($ttl) ? $ttl : (is_numeric($ttl) ? (int) $ttl : 3600));
 
         $inactiveSessions = Session::where('is_active', true)
             ->where('last_activity_at', '<', $cutoff)

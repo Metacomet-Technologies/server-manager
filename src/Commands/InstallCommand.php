@@ -80,7 +80,7 @@ class InstallCommand extends Command
 
         // Add NPM dependencies
         $this->info('Adding NPM dependencies...');
-        $this->updateNodePackages(function ($packages) {
+        $this->updateNodePackages(function (array $packages): array {
             return [
                 '@inertiajs/react' => '^1.0.0',
                 'react' => '^18.2.0',
@@ -93,13 +93,15 @@ class InstallCommand extends Command
             ] + $packages;
         });
 
-        $this->updateNodePackages(function ($packages) {
+        $this->updateNodePackages(function (array $packages): array {
             return [
                 '@vitejs/plugin-react' => '^4.0.0',
-                '@tailwindcss/forms' => '^0.5.3',
-                'autoprefixer' => '^10.4.12',
-                'postcss' => '^8.4.18',
-                'tailwindcss' => '^3.2.0',
+                '@tailwindcss/forms' => '^0.5.9',
+                '@tailwindcss/vite' => '^4.1.11',
+                'tailwindcss' => '^4.1.11',
+                'typescript' => '^5.7.0',
+                '@types/react' => '^19.0.0',
+                '@types/react-dom' => '^19.0.0',
             ] + $packages;
         }, true);
     }
@@ -124,7 +126,7 @@ class InstallCommand extends Command
         $this->line('Remember to start Reverb with: php artisan reverb:start');
     }
 
-    protected function updateNodePackages(callable $callback, $dev = false): void
+    protected function updateNodePackages(callable $callback, bool $dev = false): void
     {
         if (! file_exists(base_path('package.json'))) {
             return;

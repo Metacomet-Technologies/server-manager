@@ -15,12 +15,16 @@ use function ssh2_fetch_stream;
 
 class Ssh2Connection implements ConnectionInterface
 {
+    /** @var resource|null */
     private $connection;
 
+    /** @var array<string, mixed> */
     private array $connectionConfig;
 
+    /** @var array<string, string> */
     private array $runningProcesses = [];
 
+    /** @param array<string, mixed> $connectionConfig */
     public function __construct(array $connectionConfig)
     {
         if (! extension_loaded('ssh2')) {
@@ -105,6 +109,7 @@ class Ssh2Connection implements ConnectionInterface
         return $this->connection !== null;
     }
 
+    /** @return array<string, mixed> */
     public function execute(string $command): array
     {
         if (! $this->isConnected()) {

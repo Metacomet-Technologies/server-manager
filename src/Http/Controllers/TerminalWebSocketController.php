@@ -18,6 +18,7 @@ class TerminalWebSocketController extends Controller
             return response()->json(['error' => 'Unauthorized'], 403);
         }
 
+        /** @var array<string, mixed> $validated */
         $validated = $request->validate([
             'command' => 'required|string',
         ]);
@@ -38,6 +39,7 @@ class TerminalWebSocketController extends Controller
             return response()->json(['error' => 'Unauthorized'], 403);
         }
 
+        /** @var array<string, mixed> $validated */
         $validated = $request->validate([
             'cols' => 'required|integer|min:10|max:500',
             'rows' => 'required|integer|min:5|max:200',

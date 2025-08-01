@@ -8,7 +8,7 @@ use Metacomet\ServerManager\Models\Session;
 
 class TerminalController
 {
-    public function show(Session $session)
+    public function show(Session $session): \Inertia\Response
     {
         $this->authorize('view', $session);
 
@@ -33,7 +33,7 @@ class TerminalController
         ]);
     }
 
-    protected function authorize($ability, $resource)
+    protected function authorize(string $ability, mixed $resource): void
     {
         if (! Gate::allows($ability, $resource)) {
             abort(403);

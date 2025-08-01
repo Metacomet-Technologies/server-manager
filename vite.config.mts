@@ -1,7 +1,11 @@
 import { defineConfig } from 'vite';
 import laravel from 'laravel-vite-plugin';
 import react from '@vitejs/plugin-react';
-import path from 'path';
+import tailwindcss from '@tailwindcss/vite';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 export default defineConfig({
     plugins: [
@@ -13,6 +17,7 @@ export default defineConfig({
             refresh: true,
         }),
         react(),
+        tailwindcss(),
     ],
     resolve: {
         alias: {
@@ -25,8 +30,9 @@ export default defineConfig({
             output: {
                 entryFileNames: 'js/[name].js',
                 chunkFileNames: 'js/[name].js',
-                assetFileNames: ({ name }) => {
-                    if (name.endsWith('.css')) {
+                assetFileNames: (assetInfo) => {
+                    const info = assetInfo.type === 'asset' ? assetInfo : null;
+                    if (info?.originalFileName?.endsWith('.css')) {
                         return 'css/[name][extname]';
                     }
                     return 'assets/[name][extname]';

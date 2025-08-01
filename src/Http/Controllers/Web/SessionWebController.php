@@ -16,7 +16,7 @@ class SessionWebController
         protected SessionManager $sessionManager
     ) {}
 
-    public function index()
+    public function index(): \Inertia\Response
     {
         $sessions = Session::with('server', 'sharedUsers')
             ->where(function ($query) {
@@ -33,7 +33,7 @@ class SessionWebController
         ]);
     }
 
-    public function create(Request $request)
+    public function create(Request $request): \Inertia\Response
     {
         $serverId = $request->query('server_id');
         $server = null;
@@ -49,8 +49,9 @@ class SessionWebController
         ]);
     }
 
-    public function store(Request $request)
+    public function store(Request $request): \Illuminate\Http\RedirectResponse
     {
+        /** @var array<string, mixed> $validated */
         $validated = $request->validate([
             'server_id' => 'required|string',
             'name' => 'nullable|string|max:255',
@@ -80,7 +81,7 @@ class SessionWebController
         return redirect()->route('server-manager.terminal', $session->id);
     }
 
-    public function destroy(Session $session)
+    public function destroy(Session $session): \Illuminate\Http\RedirectResponse
     {
         $this->authorize('delete', $session);
 
@@ -90,7 +91,7 @@ class SessionWebController
             ->with('success', 'Session ended successfully');
     }
 
-    public function share(Session $session)
+    public function share(Session $session): \Inertia\Response
     {
         $this->authorize('share', $session);
 
@@ -109,10 +110,11 @@ class SessionWebController
         ]);
     }
 
-    public function storeShare(Request $request, Session $session)
+    public function storeShare(Request $request, Session $session): \Illuminate\Http\RedirectResponse
     {
         $this->authorize('share', $session);
 
+        /** @var array<string, mixed> $validated */
         $validated = $request->validate([
             'user_id' => 'required|exists:users,id',
             'can_execute' => 'boolean',
@@ -137,7 +139,7 @@ class SessionWebController
             ->with('success', 'Session shared successfully');
     }
 
-    public function destroyShare(Session $session, $userId)
+    public function destroyShare(Session $session, string|int $userId): \Illuminate\Http\RedirectResponse
     {
         $this->authorize('share', $session);
 
@@ -149,7 +151,7 @@ class SessionWebController
             ->with('success', 'Access revoked successfully');
     }
 
-    protected function authorize($ability, $resource)
+    protected function authorize(string $ability, mixed $resource): void
     {
         if (! Gate::allows($ability, $resource)) {
             abort(403);

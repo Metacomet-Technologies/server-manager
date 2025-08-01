@@ -19,6 +19,7 @@ class CommandController extends Controller
             abort(403, 'You do not have permission to execute commands in this session');
         }
 
+        /** @var array<string, mixed> $validated */
         $validated = $request->validate([
             'command' => 'required|string',
         ]);
@@ -63,6 +64,7 @@ class CommandController extends Controller
             abort(403, 'You do not have permission to execute commands in this session');
         }
 
+        /** @var array<string, mixed> $validated */
         $validated = $request->validate([
             'command' => 'required|string',
         ]);

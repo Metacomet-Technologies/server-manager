@@ -14,7 +14,7 @@ class ServerWebController
         protected SessionManager $sessionManager
     ) {}
 
-    public function index()
+    public function index(): \Inertia\Response
     {
         $servers = Server::where('user_id', auth()->id())
             ->latest()
@@ -28,13 +28,14 @@ class ServerWebController
         ]);
     }
 
-    public function create()
+    public function create(): \Inertia\Response
     {
         return Inertia::render('ServerManager/Servers/Create');
     }
 
-    public function store(Request $request)
+    public function store(Request $request): \Illuminate\Http\RedirectResponse
     {
+        /** @var array<string, mixed> $validated */
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'host' => 'required|string|max:255',
@@ -53,7 +54,7 @@ class ServerWebController
             ->with('success', 'Server added successfully');
     }
 
-    public function show(Server $server)
+    public function show(Server $server): \Inertia\Response
     {
         $this->authorize('view', $server);
 
@@ -62,7 +63,7 @@ class ServerWebController
         ]);
     }
 
-    public function edit(Server $server)
+    public function edit(Server $server): \Inertia\Response
     {
         $this->authorize('update', $server);
 
@@ -71,10 +72,11 @@ class ServerWebController
         ]);
     }
 
-    public function update(Request $request, Server $server)
+    public function update(Request $request, Server $server): \Illuminate\Http\RedirectResponse
     {
         $this->authorize('update', $server);
 
+        /** @var array<string, mixed> $validated */
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'host' => 'required|string|max:255',
@@ -99,7 +101,7 @@ class ServerWebController
             ->with('success', 'Server updated successfully');
     }
 
-    public function destroy(Server $server)
+    public function destroy(Server $server): \Illuminate\Http\RedirectResponse
     {
         $this->authorize('delete', $server);
 
@@ -111,7 +113,7 @@ class ServerWebController
             ->with('success', 'Server deleted successfully');
     }
 
-    public function testConnection(Server $server)
+    public function testConnection(Server $server): \Illuminate\Http\JsonResponse
     {
         $this->authorize('view', $server);
 
@@ -132,7 +134,7 @@ class ServerWebController
         }
     }
 
-    protected function authorize($ability, $resource)
+    protected function authorize(string $ability, mixed $resource): void
     {
         if (! Gate::allows($ability, $resource)) {
             abort(403);

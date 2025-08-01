@@ -10,7 +10,7 @@ class TerminalService
 {
     public function __construct(private SessionManager $sessionManager) {}
 
-    public function executeCommand(Session $session, string $command, $userId): void
+    public function executeCommand(Session $session, string $command, string|int $userId): void
     {
         $connection = $this->sessionManager->getConnection($session);
 

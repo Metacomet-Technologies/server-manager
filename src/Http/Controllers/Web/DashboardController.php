@@ -8,10 +8,11 @@ use Metacomet\ServerManager\Models\Session;
 
 class DashboardController
 {
-    public function index()
+    public function index(): \Inertia\Response
     {
         $userId = auth()->id();
 
+        /** @var array<string, int> $stats */
         $stats = [
             'servers' => Server::where('user_id', $userId)->count(),
             'activeSessions' => Session::where('user_id', $userId)

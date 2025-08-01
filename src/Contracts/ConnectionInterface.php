@@ -10,6 +10,7 @@ interface ConnectionInterface
 
     public function isConnected(): bool;
 
+    /** @return array<string, mixed> */
     public function execute(string $command): array;
 
     public function executeAsync(string $command): string;

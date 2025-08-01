@@ -14,6 +14,10 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property string|null $output
  * @property int|null $exit_code
  * @property int|null $duration_ms
+ * @property \Carbon\Carbon|null $created_at
+ * @property \Carbon\Carbon|null $updated_at
+ * @property-read Session $session
+ * @property-read mixed $user
  */
 class CommandHistory extends Model
 {
@@ -21,12 +25,13 @@ class CommandHistory extends Model
 
     protected $guarded = ['id'];
 
+    /** @var array<string, string> */
     protected $casts = [
         'exit_code' => 'integer',
         'duration_ms' => 'integer',
     ];
 
-    public function getTable()
+    public function getTable(): string
     {
         return config('server-manager.tables.command_history', 'sm_command_history');
     }

@@ -23,6 +23,7 @@ class ServerController extends Controller
 
     public function store(Request $request): JsonResponse
     {
+        /** @var array<string, mixed> $validated */
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'host' => 'required_unless:is_local,true|string|max:255',
@@ -56,6 +57,7 @@ class ServerController extends Controller
     {
         $this->authorize('update', $server);
 
+        /** @var array<string, mixed> $validated */
         $validated = $request->validate([
             'name' => 'string|max:255',
             'host' => 'string|max:255',

@@ -10,10 +10,13 @@ class PhpSeclibConnection implements ConnectionInterface
 {
     private SSH2 $ssh;
 
+    /** @var array<string, mixed> */
     private array $connectionConfig;
 
+    /** @var array<string, string> */
     private array $runningProcesses = [];
 
+    /** @param array<string, mixed> $connectionConfig */
     public function __construct(array $connectionConfig)
     {
         $this->connectionConfig = $connectionConfig;
@@ -65,6 +68,7 @@ class PhpSeclibConnection implements ConnectionInterface
         return $this->ssh->isConnected();
     }
 
+    /** @return array<string, mixed> */
     public function execute(string $command): array
     {
         if (! $this->isConnected()) {

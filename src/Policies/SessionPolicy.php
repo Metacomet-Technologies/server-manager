@@ -9,23 +9,23 @@ class SessionPolicy
 {
     use HandlesAuthorization;
 
-    public function view($user, Session $session): bool
+    public function view(mixed $user, Session $session): bool
     {
-        return $session->canUserAccess($user->id);
+        return $session->canUserAccess(is_object($user) && property_exists($user, 'id') ? $user->id : null);
     }
 
-    public function delete($user, Session $session): bool
+    public function delete(mixed $user, Session $session): bool
     {
-        return (string) $session->user_id === (string) $user->id;
+        return (string) $session->user_id === (string) (is_object($user) && property_exists($user, 'id') ? $user->id : null);
     }
 
-    public function share($user, Session $session): bool
+    public function share(mixed $user, Session $session): bool
     {
-        return (string) $session->user_id === (string) $user->id;
+        return (string) $session->user_id === (string) (is_object($user) && property_exists($user, 'id') ? $user->id : null);
     }
 
-    public function execute($user, Session $session): bool
+    public function execute(mixed $user, Session $session): bool
     {
-        return $session->canUserExecute($user->id);
+        return $session->canUserExecute(is_object($user) && property_exists($user, 'id') ? $user->id : null);
     }
 }

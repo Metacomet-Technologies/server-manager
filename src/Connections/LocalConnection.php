@@ -8,6 +8,7 @@ use Symfony\Component\Process\Process;
 
 class LocalConnection implements ConnectionInterface
 {
+    /** @var array<string, Process> */
     private array $runningProcesses = [];
 
     private bool $connected = false;
@@ -34,6 +35,7 @@ class LocalConnection implements ConnectionInterface
         return $this->connected;
     }
 
+    /** @return array<string, mixed> */
     public function execute(string $command): array
     {
         if (! $this->connected) {
